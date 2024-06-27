@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from 'react-bootstrap/Carousel';
 
-function Carousels() {
+const Carousels =() =>{
   return (
 
  <Carousel controls={false} indicators={false} style={{ height: "500px", width: "100%" }} className="mt-1"> 
