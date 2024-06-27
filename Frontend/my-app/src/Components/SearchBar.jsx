@@ -1,8 +1,8 @@
-import React from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const SearchBar= () => {
+const SearchBar = () => {
   return (
     <Container>
       <Row className="justify-content-center">
@@ -22,4 +22,4 @@ const SearchBar= () => {
   );
 };
 
-export default SearchBar
+export default SearchBar;
