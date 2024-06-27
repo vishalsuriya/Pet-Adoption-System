@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchBar from './SearchBar';
 
-function Navigationbar() {
+const Navigationbar =()=> {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
