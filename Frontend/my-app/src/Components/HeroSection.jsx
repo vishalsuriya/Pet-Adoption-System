@@ -7,7 +7,7 @@ const HeroSection = () => {
       <Container className="col-xxl-8 px-4 py-5">
         <Row className="flex-lg-row-reverse align-items-center g-5 py-5">
           <Col xs={10} sm={8} lg={6}>
-            <Image src="https://i.pinimg.com/736x/dd/78/73/dd7873e58ed62e7fcd52d9efe46c6924.jpg" className="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width={700} height={500} loading="lazy" />
+            <Image src="https://i.pinimg.com/736x/dd/78/73/dd7873e58ed62e7fcd52d9efe46c6924.jpg" className="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width={350} height={350} loading="lazy" roundedCircle/>
           </Col>
           <Col lg={6}>
             <h1 className="display-5 fw-bold text-body-emphasis lh-1 mb-3">Responsive left-aligned hero with image</h1>
