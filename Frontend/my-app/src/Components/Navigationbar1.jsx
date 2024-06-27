@@ -1,7 +1,7 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import Nav from 'react-bootstrap/Nav';
 
-function Navigationbar1() {
+const  Navigationbar1=()=> {
   return (
     <Nav justify>
       <Nav.Item>
@@ -23,6 +23,9 @@ function Navigationbar1() {
         <Dropdown.Item>List1</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
+
+
+
       </Nav.Item>
      
     </Nav>

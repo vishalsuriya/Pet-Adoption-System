@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function PetList() {
+const PetList =()=> {
   return (
     <div className="d-grid gap-4 mt-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(12rem, 1fr))' }}>
       <Card>
