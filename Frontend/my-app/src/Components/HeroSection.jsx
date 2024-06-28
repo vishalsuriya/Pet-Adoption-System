@@ -1,9 +1,16 @@
 import React from "react";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import {useNavigate} from 'react-router-dom'
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+  const handleClick = () =>{
+    
+    navigate('/adopt')
+  }
+
+  
   return (
     <Container className="col-xxl-8 px-4 py-5">
       <Row className="flex-lg-row-reverse align-items-center g-5 py-5">
@@ -38,6 +45,7 @@ const HeroSection = () => {
               className="px-4 me-md-2"
               id="gen-btn"
               variant="outline-success"
+              onClick={handleClick}
             >
               Adopt Me
             </Button>
