@@ -4,8 +4,18 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import {useNavigate} from 'react-router-dom'
 
 const PetList = () => {
+
+  const navigate = useNavigate();
+
+const handleDogClick = () =>{
+    navigate('/dogs')
+}
+const handleCatClick = () =>{
+  navigate('/cats')
+}
   return (
     <Container className="mt-4">
       <Row className="justify-content-center">
@@ -28,7 +38,7 @@ const PetList = () => {
                   bulk of the card's content.
                 </Card.Text> */}
                 <div className="d-grid">
-                  <Button id="gen-btn" variant="outline-success">
+                  <Button onClick = {handleDogClick}id="gen-btn" variant="outline-success">
                     Dogs
                   </Button>
                 </div>
@@ -47,7 +57,7 @@ const PetList = () => {
                   bulk of the card's content.
                 </Card.Text> */}
                 <div className="d-grid">
-                  <Button id="gen-btn" variant="outline-success">
+                  <Button onClick = {handleCatClick} id="gen-btn" variant="outline-success">
                     Cats
                   </Button>
                 </div>

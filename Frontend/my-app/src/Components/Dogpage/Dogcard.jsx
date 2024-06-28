@@ -1,7 +1,10 @@
 import React from 'react'
 import {Row, Col, Card} from 'react-bootstrap'
+
 const Dogcard = ({dogs}) => {
-  return (
+
+
+  return (  
     <div>
         {/* <Col> */}
         <Card>
