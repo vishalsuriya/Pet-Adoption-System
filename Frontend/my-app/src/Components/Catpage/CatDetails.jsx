@@ -8,7 +8,7 @@ const CatDetails = () => {
     const [catData, setCatData] = useState([])
     useEffect(() => {
       axios
-        .get("http://localhost:5000/dog-details")
+        .get("http://localhost:5000/api/petdata")
         .then((response) => {
           setCatData(response.data);
         })

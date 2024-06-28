@@ -8,7 +8,7 @@ const DogDetails = () => {
     const [dogData, setdogData] = useState([])
     useEffect(() => {
         axios
-          .get("http://localhost:5000/dog-details")
+          .get("http://localhost:5000/api/petdata")
           .then((response) => {
             setdogData(response.data);
           })
@@ -40,4 +40,4 @@ const DogDetails = () => {
   )
 }
 
-export default DogDetails
+export default DogDetails;
