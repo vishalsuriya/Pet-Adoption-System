@@ -1,0 +1,16 @@
+.buttons{
+    margin-left: 220px;
+    /* padding-left: 50px; */
+}
+
+.adopt-btn{
+    margin-right: 100px;
+}
+.details{
+    margin-left: 180px;
+}
+.cards{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    font-style: italic;
+}

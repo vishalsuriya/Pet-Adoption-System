@@ -25,6 +25,7 @@ const DogDetails = () => {
                
                 {dogData.map((data) => {
                         return (
+                          data.species === "Dog" &&
                         <Dogcard
                           key={data.id}
                           dogs = {data}
