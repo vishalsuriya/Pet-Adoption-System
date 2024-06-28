@@ -1,7 +1,7 @@
 import React , {useState}from 'react'
 import {Button, Row, Col, Card} from 'react-bootstrap'
 import '../Dogpage/dogStyle.css'
-import AdoptModal from '../Modal/AdoptModal';
+import AdoptModal from '../Modal/DogModal';
 const Dogcard = ({dogs}) => {
 
     const [showModal, setShowModal] = useState(false);

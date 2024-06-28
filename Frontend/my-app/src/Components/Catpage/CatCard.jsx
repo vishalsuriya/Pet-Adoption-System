@@ -1,7 +1,16 @@
-import React from 'react'
+import React , {useState}from 'react'
 import {Button, Card,Row, Col} from 'react-bootstrap'
+import AdoptModal from '../Modal/DogModal'
 import '../Dogpage/dogStyle.css'
+import CatModal from '../Modal/CatModal'
 const CatCard = ({cats}) => {
+
+    const [showModal, setShowModal] = useState(false);
+
+    const   handleShow = () => setShowModal(true);
+    const handleClose = () => setShowModal(false);
+  
+  
   return (
     <div className='cards'>
         <Card>
@@ -32,8 +41,13 @@ const CatCard = ({cats}) => {
                 <Row>
                     <Col>
                         <Button className='adopt-btn'>Adopt me</Button>
-                        <Button className='about-btn'>About me</Button>
-
+                        <Button className='about-btn' onClick={handleShow}>About me</Button>
+                        <CatModal
+                            show = {showModal}
+                            onHide = {handleClose}
+                            cats = {cats}
+                            
+                        />
                     </Col>
                 </Row>
             </div>
