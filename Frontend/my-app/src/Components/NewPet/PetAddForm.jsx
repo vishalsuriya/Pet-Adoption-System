@@ -1,34 +1,59 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 import '../NewPet/PetAddFormStyle.css';
 
 function PetAddForm() {
   const [formData, setFormData] = useState({
     petName: '',
-    breed : '',
+    breed: '',
     species: '',
     age: '',
     gender: '',
     origin: '',
     size: '',
-    weight : '',
+    weight: '',
     temperament: '',
     coat: '',
-    lifeSpan : '',
-    specialCharacteristics: ''
+    lifeSpan: '',
+    specialCharacteristics: '',
+    image: ''
   });
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleImageChange = (e) => {
+    setFormData({
+      ...formData,
+      image: e.target.files[0] 
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    const data = new FormData();
+    Object.keys(formData).forEach((key) => {
+      data.append(key, formData[key]);
+    });
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/pets', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -73,7 +98,8 @@ function PetAddForm() {
             value={formData.age}
             onChange={handleChange}
           />
-             <Form.Group className="mb-3">
+        </Form.Group>
+        <Form.Group className="mb-3">
           <Form.Label>Gender</Form.Label>
           <Form.Control
             type="text"
@@ -82,7 +108,6 @@ function PetAddForm() {
             value={formData.gender}
             onChange={handleChange}
           />
-        </Form.Group>
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Origin</Form.Label>
@@ -159,7 +184,7 @@ function PetAddForm() {
           <Form.Control
             type="file"
             name="image"
-            onChange={handleChange}
+            onChange={handleImageChange}
           />
         </Form.Group>
         <Button variant="primary" type="submit">
