@@ -1,0 +1,28 @@
+/* PetAdoptionForm.css */
+
+/* Form container */
+.form-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Section headers */
+  h2, h3 {
+    margin-top: 20px;
+  }
+  
+  /* Checkbox styling */
+  .form-check {
+    margin-top: 10px;
+  }
+  
+  /* Submit button */
+  .submit-btn {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
