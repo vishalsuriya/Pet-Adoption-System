@@ -6,6 +6,7 @@ import PetList from "./PetList";
 import Footer from "./Footer";
 import HeroSection from "./HeroSection";
 import Hero from "./Hero";
+import AdoptForm from "./AdoptPet/AdoptForm";
 const Home = () => {
   return (
     <>
@@ -13,7 +14,7 @@ const Home = () => {
       <Navigationbar1 />
       <Carousels />
       <HeroSection />
-
+      <AdoptForm />
       <PetList />
       <Hero />
 
