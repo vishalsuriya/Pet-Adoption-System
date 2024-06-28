@@ -2,7 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 import Home  from './Components/Home';
 import PetAddForm from "./Components/NewPet/PetAddForm";
 import DogDetails from './Components/Dogpage/DogDetails';
-import CatDetails from './Components/Petpage/CatDetails';
+import CatDetails from './Components/Catpage/CatDetails';
+import AdoptForm from './Components/AdoptPet/AdoptForm';
+import AdoptModal from './Components/Modal/AdoptModal';
 function App() {
   return (
     <>
@@ -13,6 +15,7 @@ function App() {
       <Route path="/cats" element={<CatDetails/>}></Route>
 
     </Routes>
+    {/* <AdoptModal/> */}
     </>
   );
 }
