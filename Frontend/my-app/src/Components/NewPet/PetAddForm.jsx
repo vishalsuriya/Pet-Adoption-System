@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import '../NewPet/PetAddFormStyle.css';
 
@@ -21,6 +22,9 @@ function PetAddForm() {
     image: ''
   });
 
+  const [alert, setAlert] = useState({ show: false, message: '', variant: '' });
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -29,35 +33,43 @@ function PetAddForm() {
     });
   };
 
-  const handleImageChange = (e) => {
-    setFormData({
-      ...formData,
-      image: e.target.files[0] 
-    });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const data = new FormData();
-    Object.keys(formData).forEach((key) => {
-      data.append(key, formData[key]);
-    });
+    setIsLoading(true);
+    setAlert({ show: false, message: '', variant: '' });
 
     try {
-      const response = await axios.post('http://localhost:5000/api/pets', data, {
+      const response = await axios.post('http://localhost:5000/api/pets', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'application/json'
         }
       });
-      console.log(response.data);
+      setAlert({ show: true, message: 'Pet added successfully!', variant: 'success' });
+      setFormData({
+        petName: '',
+        breed: '',
+        species: '',
+        age: '',
+        gender: '',
+        origin: '',
+        size: '',
+        weight: '',
+        temperament: '',
+        coat: '',
+        lifeSpan: '',
+        specialCharacteristics: '',
+        image: ''
+      });
     } catch (error) {
-      console.error(error);
+      setAlert({ show: true, message: 'Failed to add pet. Please try again.', variant: 'danger' });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="pet-add-form-container">
+      {alert.show && <Alert variant={alert.variant}>{alert.message}</Alert>}
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Pet Name</Form.Label>
@@ -67,6 +79,7 @@ function PetAddForm() {
             placeholder="Enter Name"
             value={formData.petName}
             onChange={handleChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -77,6 +90,7 @@ function PetAddForm() {
             placeholder="Enter Breed"
             value={formData.breed}
             onChange={handleChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -87,6 +101,7 @@ function PetAddForm() {
             placeholder="Enter Species"
             value={formData.species}
             onChange={handleChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -97,6 +112,7 @@ function PetAddForm() {
             placeholder="Enter Age"
             value={formData.age}
             onChange={handleChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -107,6 +123,7 @@ function PetAddForm() {
             placeholder="Enter Gender"
             value={formData.gender}
             onChange={handleChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -117,6 +134,7 @@ function PetAddForm() {
             placeholder="Enter Origin"
             value={formData.origin}
             onChange={handleChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -127,6 +145,7 @@ function PetAddForm() {
             placeholder="Enter Size"
             value={formData.size}
             onChange={handleChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -137,6 +156,7 @@ function PetAddForm() {
             placeholder="Enter Weight"
             value={formData.weight}
             onChange={handleChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -147,16 +167,18 @@ function PetAddForm() {
             placeholder="Enter Temperament"
             value={formData.temperament}
             onChange={handleChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Color and CoatType</Form.Label>
+          <Form.Label>Color and Coat Type</Form.Label>
           <Form.Control
             type="text"
             name="coat"
-            placeholder="Enter Color and CoatType"
+            placeholder="Enter Color and Coat Type"
             value={formData.coat}
             onChange={handleChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -167,6 +189,7 @@ function PetAddForm() {
             placeholder="Enter Life Span"
             value={formData.lifeSpan}
             onChange={handleChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -177,18 +200,22 @@ function PetAddForm() {
             placeholder="Enter Special Characteristics"
             value={formData.specialCharacteristics}
             onChange={handleChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Pet Image</Form.Label>
+          <Form.Label>Pet Image URL</Form.Label>
           <Form.Control
-            type="file"
+            type="text"
             name="image"
-            onChange={handleImageChange}
+            placeholder="Enter Image URL"
+            value={formData.image}
+            onChange={handleChange}
+            required
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Add New Pet
+        <Button variant="primary" type="submit" disabled={isLoading}>
+          {isLoading ? 'Adding...' : 'Add New Pet'}
         </Button>
       </Form>
     </div>
