@@ -14,6 +14,10 @@ function App() {
       <Route path="/dogs" element={<DogDetails/>}></Route>      
       <Route path="/cats" element={<CatDetails/>}></Route>
       <Route path='/adopt' element={<AdoptForm/>}></Route>
+      <Route path='/petAddform' element={<AdoptForm/>}></Route>
+      <Route path='/adopt' element={<AdoptForm/>}></Route>
+      <Route path='/adopt' element={<PetAddForm/>}></Route>
+
     </Routes>
     {/* <AdoptModal/> */}
     </>
