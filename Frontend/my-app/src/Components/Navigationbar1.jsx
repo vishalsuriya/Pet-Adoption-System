@@ -7,7 +7,7 @@ const Navigationbar1 = () => {
   const [pets, setPets] = useState([])
   useEffect(() => {
       axios
-        .get("http://localhost:5000/dog-details")
+        .get("http://localhost:8000/api/petdata")
         .then((response) => {
           setPets(response.data);
         })

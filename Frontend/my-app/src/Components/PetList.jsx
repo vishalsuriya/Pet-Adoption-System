@@ -17,7 +17,7 @@ const handleCatClick = () =>{
   navigate('/cats')
 }
   return (
-    <Container className="mt-4">
+    <Container  >
       <Row className="justify-content-center">
         <Col md={6}>
           <div

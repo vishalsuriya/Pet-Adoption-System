@@ -4,10 +4,11 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const connectDB = require("./connection"); 
 const Pets = require("./Schemas/PetSchema"); 
+const Adopt = require("../Backend/Schemas/AdoptSchema");
 connectDB();
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 app.use(cors());
 app.use(bodyParser.json());

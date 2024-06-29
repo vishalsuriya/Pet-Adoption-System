@@ -77,10 +77,6 @@ const AdoptSchema = new mongoose.Schema({
     type: Boolean,
     required: false,
   },
-  indoorOutdoor: {
-    type: String,
-    required: false,
-  },
   petSupervision: {
     type: String,
     required: false,

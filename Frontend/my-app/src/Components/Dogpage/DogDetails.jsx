@@ -8,7 +8,7 @@ const DogDetails = () => {
     const [dogData, setdogData] = useState([])
     useEffect(() => {
         axios
-          .get("http://localhost:5000/api/petdata")
+          .get("http://localhost:8000/api/petdata")
           .then((response) => {
             setdogData(response.data);
           })
