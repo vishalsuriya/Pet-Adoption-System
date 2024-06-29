@@ -12,11 +12,8 @@ const Navigationbar = () => {
   const handleAddClick = () =>{
     navigate('petAddform')
   } 
-  const handleUpdateClick = () =>{
-    navigate('petUpdateform')
-  } 
   const handleDeleteClick = () =>{
-    navigate('petDeleteform')
+    navigate('viewPetDetails')
 
   } 
 
@@ -30,8 +27,7 @@ const Navigationbar = () => {
         {/* <SearchBar /> */}
         <div >
           <Button id="gen-btn" onClick={handleAddClick} style={{borderRadius:'10px', marginRight:'10px'}}>Pet_Add</Button>
-          <Button id="gen-btn" onClick={handleUpdateClick} style={{borderRadius:'10px', marginRight:'10px'}}>Pet_Update</Button>
-          <Button id="gen-btn" onClick={handleDeleteClick} style={{borderRadius:'10px', marginRight:'10px'}}>Pet_Delete</Button>
+          <Button id="gen-btn" onClick={handleDeleteClick} style={{borderRadius:'10px', marginRight:'10px'}}>Pet_Details</Button>
 
         </div>
         
