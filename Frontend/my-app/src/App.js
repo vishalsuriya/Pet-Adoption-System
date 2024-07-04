@@ -11,13 +11,9 @@ function App() {
     <Routes>
       <Route path="/" element ={<Home />}/>
       <Route path="/PetAddForm" element ={<PetAddForm />}/>
-      <Route path="/dogs" element={<DogDetails/>}></Route>      
-      <Route path="/cats" element={<CatDetails/>}></Route>
+      <Route path="/dogs/:id" element={<DogDetails />} />
+      <Route path="/cats/:id" element={<CatDetails />} />
       <Route path='/adopt' element={<AdoptForm/>}></Route>
-      <Route path='/petAddform' element={<AdoptForm/>}></Route>
-      <Route path='/adopt' element={<AdoptForm/>}></Route>
-      <Route path='/adopt' element={<PetAddForm/>}></Route>
-
     </Routes>
     {/* <AdoptModal/> */}
     </>
