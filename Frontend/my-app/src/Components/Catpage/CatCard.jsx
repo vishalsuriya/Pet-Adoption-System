@@ -48,7 +48,7 @@ const CatCard = ({ cats }) => {
               }}
             >
               <div style={{ marginBottom: "10px" }}>
-                <GrUpdate />
+                <GrUpdate/>
               </div>
               <div style={{ marginBottom: "10px" }}>
                 <MdDeleteOutline />
