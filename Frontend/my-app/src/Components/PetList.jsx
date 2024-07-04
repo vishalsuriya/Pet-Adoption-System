@@ -7,14 +7,14 @@ import Col from "react-bootstrap/Col";
 import {useNavigate} from 'react-router-dom'
 
 const PetList = () => {
-
+  
   const navigate = useNavigate();
 
 const handleDogClick = () =>{
-    navigate('/dogs/id')
+    navigate('/dogs')
 }
 const handleCatClick = () =>{
-  navigate('/cats/id')
+  navigate('/cats')
 }
   return (
     <Container  >

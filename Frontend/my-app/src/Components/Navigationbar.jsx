@@ -10,15 +10,12 @@ const Navigationbar = () => {
 
   const navigate = useNavigate()
   const handleAddClick = () =>{
-    navigate('petAddform')
+    navigate('/petAddform')
   } 
   const handleDeleteClick = () =>{
-    navigate('viewPetDetails')
+    navigate('/viewPetDetails')
 
   } 
-
-
-
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
