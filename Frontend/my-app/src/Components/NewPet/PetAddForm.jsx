@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import '../NewPet/PetAddFormStyle.css';
+import Navigationbar from '../Navigationbar'
 
 function PetAddForm() {
   const [formData, setFormData] = useState({
@@ -68,13 +69,17 @@ function PetAddForm() {
   };
 
   return (
-    <div className="pet-add-form-container">
+    <>
+    <Navigationbar/>
+    <div className="form-container">
       {alert.show && <Alert variant={alert.variant}>{alert.message}</Alert>}
       <Form onSubmit={handleSubmit}>
+      <h2 style={{ textAlign: "center" }}>Add Pet Form</h2>
         <Form.Group className="mb-3">
           <Form.Label>Pet Name</Form.Label>
           <Form.Control
             type="text"
+            className='input'
             name="petName"
             placeholder="Enter Name"
             value={formData.petName}
@@ -87,6 +92,8 @@ function PetAddForm() {
           <Form.Control
             type="text"
             name="breed"
+            className='input'
+
             placeholder="Enter Breed"
             value={formData.breed}
             onChange={handleChange}
@@ -98,6 +105,8 @@ function PetAddForm() {
           <Form.Control
             type="text"
             name="species"
+            className='input'
+
             placeholder="Enter Species"
             value={formData.species}
             onChange={handleChange}
@@ -109,6 +118,8 @@ function PetAddForm() {
           <Form.Control
             type="text"
             name="age"
+            className='input'
+
             placeholder="Enter Age"
             value={formData.age}
             onChange={handleChange}
@@ -120,6 +131,8 @@ function PetAddForm() {
           <Form.Control
             type="text"
             name="gender"
+            className='input'
+
             placeholder="Enter Gender"
             value={formData.gender}
             onChange={handleChange}
@@ -131,6 +144,8 @@ function PetAddForm() {
           <Form.Control
             type="text"
             name="origin"
+            className='input'
+
             placeholder="Enter Origin"
             value={formData.origin}
             onChange={handleChange}
@@ -142,6 +157,8 @@ function PetAddForm() {
           <Form.Control
             type="text"
             name="size"
+            className='input'
+
             placeholder="Enter Size"
             value={formData.size}
             onChange={handleChange}
@@ -152,6 +169,8 @@ function PetAddForm() {
           <Form.Label>Weight</Form.Label>
           <Form.Control
             type="text"
+            className='input'
+
             name="weight"
             placeholder="Enter Weight"
             value={formData.weight}
@@ -163,6 +182,8 @@ function PetAddForm() {
           <Form.Label>Temperament</Form.Label>
           <Form.Control
             type="text"
+            className='input'
+
             name="temperament"
             placeholder="Enter Temperament"
             value={formData.temperament}
@@ -174,6 +195,8 @@ function PetAddForm() {
           <Form.Label>Color and Coat Type</Form.Label>
           <Form.Control
             type="text"
+            className='input'
+
             name="coat"
             placeholder="Enter Color and Coat Type"
             value={formData.coat}
@@ -185,6 +208,8 @@ function PetAddForm() {
           <Form.Label>Life-Span</Form.Label>
           <Form.Control
             type="text"
+            className='input'
+
             name="lifeSpan"
             placeholder="Enter Life Span"
             value={formData.lifeSpan}
@@ -196,6 +221,8 @@ function PetAddForm() {
           <Form.Label>Special Characteristics</Form.Label>
           <Form.Control
             type="text"
+            className='input'
+
             name="specialCharacteristics"
             placeholder="Enter Special Characteristics"
             value={formData.specialCharacteristics}
@@ -207,6 +234,8 @@ function PetAddForm() {
           <Form.Label>Pet Image URL</Form.Label>
           <Form.Control
             type="text"
+            className='input'
+
             name="image"
             placeholder="Enter Image URL"
             value={formData.image}
@@ -214,11 +243,12 @@ function PetAddForm() {
             required
           />
         </Form.Group>
-        <Button variant="primary" type="submit" disabled={isLoading}>
+        <Button variant="primary" type="submit" id='gen-btn'  disabled={isLoading}>
           {isLoading ? 'Adding...' : 'Add New Pet'}
         </Button>
       </Form>
     </div>
+    </>
   );
 }
 
