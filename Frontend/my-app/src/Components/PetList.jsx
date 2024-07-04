@@ -11,10 +11,10 @@ const PetList = () => {
   const navigate = useNavigate();
 
 const handleDogClick = () =>{
-    navigate('/dogs')
+    navigate('/dogs/id')
 }
 const handleCatClick = () =>{
-  navigate('/cats')
+  navigate('/cats/id')
 }
   return (
     <Container  >

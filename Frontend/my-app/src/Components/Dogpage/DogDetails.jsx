@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Navigationbar from '../Navigationbar'
-import { Container, Row, Col, Card } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 import axios from 'axios'
 import Dogcard from '../Dogpage/Dogcard'
 const DogDetails = () => {
@@ -32,8 +32,6 @@ const DogDetails = () => {
                         />
                     )
                 })}
-               
-               
             </Row>
         </Container>
     </>
