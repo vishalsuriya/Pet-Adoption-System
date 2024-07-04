@@ -5,16 +5,29 @@ import AdoptModal from "../Modal/DogModal";
 import { MdDeleteOutline } from "react-icons/md";
 import { GrUpdate } from "react-icons/gr";
 
-const Dogcard = ({ dogs }) => {
+const Dogcard = ({ dogs, onDelete }) => {
   const [showModal, setShowModal] = useState(false);
-
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
 
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/dogs/${dogs._id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete dog');
+      }
+
+      onDelete(dogs._id);
+    } catch (error) {
+      console.error('Error deleting dog:', error);
+    }
+  };
+
   return (
     <div className="cards">
-      {/* <Col> */}
-
       <Card>
         <div className="details">
           <Row>
@@ -23,14 +36,12 @@ const Dogcard = ({ dogs }) => {
                 {dogs.petName}
               </Card.Title>
               <Card.Body>
-                <ul id={dogs.id}>
-                  <li>Breed : {dogs.breed}</li>
-                  <li>Age : {dogs.age}</li>
-                  <li>Gender : {dogs.gender}</li>
-                  <li>Species : {dogs.species}</li>
-                  <li>
-                    Special Characteristics : {dogs.specialCharacteristics}
-                  </li>
+                <ul id={dogs._id}>
+                  <li>Breed: {dogs.breed}</li>
+                  <li>Age: {dogs.age}</li>
+                  <li>Gender: {dogs.gender}</li>
+                  <li>Species: {dogs.species}</li>
+                  <li>Special Characteristics: {dogs.specialCharacteristics}</li>
                 </ul>
               </Card.Body>
             </Col>
@@ -38,22 +49,30 @@ const Dogcard = ({ dogs }) => {
               <Card.Img
                 src={dogs.image}
                 style={{ height: "250px", width: "250px" }}
-              ></Card.Img>
+              />
             </Col>
             <Col
               style={{
                 display: "grid",
-                placeItems: "center", // Aligns items both vertically and horizontally
-                gridTemplateColumns: "1fr 1fr", // Single column layout
-                gap: "10px", // Gap between grid items
+                placeItems: "center",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "10px",
               }}
             >
               <div style={{ marginBottom: "10px" }}>
                 <GrUpdate />
               </div>
-              <div style={{ marginBottom: "10px" }}>
-                <MdDeleteOutline />
-              </div>
+              <button
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                }}
+                onClick={handleDelete}
+              >
+                <MdDeleteOutline size={24} color="red" />
+              </button>
             </Col>
           </Row>
         </div>
@@ -61,7 +80,6 @@ const Dogcard = ({ dogs }) => {
           <Row>
             <Col>
               <Button className="adopt-btn">Adopt me</Button>
-
               <Button className="about-btn" onClick={handleShow}>
                 About me
               </Button>
@@ -70,8 +88,6 @@ const Dogcard = ({ dogs }) => {
           </Row>
         </div>
       </Card>
-
-      {/* </Col> */}
     </div>
   );
 };
