@@ -1,41 +1,47 @@
-import React, { useState, useEffect } from 'react'
-import Navigationbar from '../Navigationbar'
-import { Container, Row } from 'react-bootstrap'
-import axios from 'axios'
-import Dogcard from '../Dogpage/Dogcard'
-const DogDetails = () => {
+import React, { useState, useEffect } from 'react';
+import Navigationbar from '../Navigationbar';
+import { Container, Row } from 'react-bootstrap';
+import axios from 'axios';
+import Dogcard from '../Dogpage/Dogcard';
 
-    const [dogData, setdogData] = useState([])
-    useEffect(() => {
-        axios
-          .get("http://localhost:8000/api/petdata")
-          .then((response) => {
-            setdogData(response.data);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      }, []);
+const DogDetails = () => {
+  const [dogData, setDogData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/petdata")
+      .then((response) => {
+        setDogData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const handleDelete = (id) => {
+    setDogData(dogData.filter(dog => dog._id !== id));
+  };
 
   return (
     <>
-        <Navigationbar/>
-        <Container>
-            <Row>
-               
-                {dogData.map((data) => {
-                        return (
-                          data.species === "Dog" &&
-                        <Dogcard
-                          key={data.id}
-                          dogs = {data}
-                        />
-                    )
-                })}
-            </Row>
-        </Container>
+      <Navigationbar />
+      <Container>
+        <Row>
+          {dogData.map((data) => {
+            return (
+              data.species === "Dog" && (
+                <Dogcard
+                  key={data._id}
+                  dogs={data}
+                  onDelete={handleDelete}
+                />
+              )
+            );
+          })}
+        </Row>
+      </Container>
     </>
-  )
-}
+  );
+};
 
 export default DogDetails;

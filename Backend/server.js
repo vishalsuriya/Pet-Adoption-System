@@ -2,9 +2,11 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const connectDB = require("./connection"); 
-const Pets = require("./Schemas/PetSchema"); 
-const Adopt = require("../Backend/Schemas/AdoptSchema");
+const { ObjectId } = require("mongodb"); // Import ObjectId from mongodb
+const connectDB = require("./connection");
+const Pets = require("./Schemas/PetSchema");
+const Adopt = require("./Schemas/AdoptSchema");
+
 connectDB();
 dotenv.config();
 const app = express();
@@ -13,7 +15,6 @@ const PORT = process.env.PORT || 8000;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 app.post('/api/adopts', async (req, res) => {
   try {
@@ -26,7 +27,7 @@ app.post('/api/adopts', async (req, res) => {
   } catch (err) {
     console.error('Error:', err);  
     res.status(500).send('Internal Server Error');
-}
+  }
 });
 
 app.post('/api/pets', async (req, res) => {
@@ -42,12 +43,29 @@ app.post('/api/pets', async (req, res) => {
   }
 });
 
- app.get('/api/petdata',async(req,res)=>{
-  const data = await Pets.find();
-  res.send(data);
- })
+app.get('/api/petdata', async (req, res) => {
+  try {
+    const data = await Pets.find();
+    res.status(200).json(data);
+  } catch (err) {
+    console.error('Database error:', err);
+    res.status(500).json({ error: 'Database error' });
+  }
+});
+
+app.delete('/api/dogs/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await Pets.deleteOne({ _id: new ObjectId(id) }); 
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ error: 'Dog not found' });
+    }
+    res.status(200).json({ message: 'Dog deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ error: 'Database error' });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
