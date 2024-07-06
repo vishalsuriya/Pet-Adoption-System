@@ -6,7 +6,7 @@ const { ObjectId } = require("mongodb"); // Import ObjectId from mongodb
 const connectDB = require("./connection");
 const Pets = require("./Schemas/PetSchema");
 const Adopt = require("./Schemas/AdoptSchema");
-
+const Admin = require("./Schemas/AdminSchema")
 connectDB();
 dotenv.config();
 const app = express();
@@ -62,6 +62,18 @@ app.delete('/api/pets/delete/:id', async (req, res) => {
     }
     res.status(200).json({ message: 'Pet deleted successfully' });
   } catch (err) {
+    res.status(500).json({ error: 'Database error' });
+  }
+});
+
+
+app.get('/api/admin', async(req,res)=>{
+
+  try {
+    const data = await Admin.find();
+    res.status(200).send(data);
+  } catch (err) {
+    console.error('Database error:', err);
     res.status(500).json({ error: 'Database error' });
   }
 });
