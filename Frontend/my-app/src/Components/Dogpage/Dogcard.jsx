@@ -7,6 +7,7 @@ const Dogcard = ({ dogs }) => {
   const [showModal, setShowModal] = useState(false);
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
+
   return (
     <div className="cards">
       <Card>
