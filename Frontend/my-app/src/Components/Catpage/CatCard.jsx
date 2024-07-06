@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import "../Dogpage/dogStyle.css";
 import PetModal from "../Modal/PetModal";
+
 const CatCard = ({ cats }) => {
- const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
+
   return (
     <div className="cards">
       <Card>
@@ -17,14 +19,11 @@ const CatCard = ({ cats }) => {
               </Card.Title>
               <Card.Body>
                 <ul id={cats.id}>
-                  <li>Breed : {cats.breed}</li>
-                  <li>Age : {cats.age}</li>
-                  <li>Gender : {cats.gender}</li>
-                  <li>Species : {cats.species}</li>
-
-                  <li>
-                    Special Characteristics : {cats.specialCharacteristics}
-                  </li>
+                  <li>Breed: {cats.breed}</li>
+                  <li>Age: {cats.age}</li>
+                  <li>Gender: {cats.gender}</li>
+                  <li>Species: {cats.species}</li>
+                  <li>Special Characteristics: {cats.specialCharacteristics}</li>
                 </ul>
               </Card.Body>
             </Col>

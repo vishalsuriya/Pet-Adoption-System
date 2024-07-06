@@ -22,10 +22,12 @@ const Navigationbar1 = () => {
     <Nav justify>
       <Nav.Item>
         <Dropdown className="bg-success">
-          <Dropdown.Toggle className="button bg-success border-success">Dogs and Puppies</Dropdown.Toggle>
+          <Dropdown.Toggle className="button bg-success border-success">
+            Dogs and Puppies
+          </Dropdown.Toggle>
           <Dropdown.Menu className="dropdown-content">
-            {pets.filter(pet => pet.species === 'Dog').map((data, index) => (
-              <Dropdown.Item key={index} as={Link} to={`/dogs/${data.id}`}>
+            {pets.filter(pet => pet.species === 'Dog').map((data) => (
+              <Dropdown.Item key={data._id} as={Link} to={`/dogs/${data._id}`}>
                 {data.breed}
               </Dropdown.Item>
             ))}
@@ -34,10 +36,12 @@ const Navigationbar1 = () => {
       </Nav.Item>
       <Nav.Item>
         <Dropdown className="bg-success">
-          <Dropdown.Toggle className="button bg-success border-success">Cats and Kittens</Dropdown.Toggle>
+          <Dropdown.Toggle className="button bg-success border-success">
+            Cats and Kittens
+          </Dropdown.Toggle>
           <Dropdown.Menu className="dropdown-content">
-            {pets.filter(pet => pet.species === 'Cat').map((data, index) => (
-              <Dropdown.Item key={index} as={Link} to={`/cats/${data.id}`}>
+            {pets.filter(pet => pet.species === 'Cat').map((data) => (
+              <Dropdown.Item key={data._id} as={Link} to={`/cats/${data._id}`}>
                 {data.breed}
               </Dropdown.Item>
             ))}

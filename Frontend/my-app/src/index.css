@@ -96,3 +96,42 @@
 
 
   
+
+  .cards {
+    margin: 20px 0;
+  }
+  
+  .dog-title {
+    font-size: 30px;
+    margin-left: 180px;
+  }
+  
+  .dog-image {
+    height: 250px;
+    width: 250px;
+  }
+  
+  .icon-col {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .error-text {
+    color: red;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  
+  .adopt-btn, .about-btn {
+    margin-right: 10px;
+  }
+  
