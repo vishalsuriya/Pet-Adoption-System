@@ -6,7 +6,6 @@ import Dogcard from '../Dogpage/Dogcard';
 
 const DogDetails = () => {
   const [dogData, setDogData] = useState([]);
-
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/petdata")
@@ -33,7 +32,6 @@ const DogDetails = () => {
                 <Dogcard
                   key={data._id}
                   dogs={data}
-                  onDelete={handleDelete}
                 />
               )
             );

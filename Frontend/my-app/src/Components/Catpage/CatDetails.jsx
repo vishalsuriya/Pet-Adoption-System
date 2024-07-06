@@ -30,13 +30,11 @@ const CatDetails = () => {
                           cats = {data}
                         />
                     )
-                })}
-               
-               
+                })};
             </Row>
         </Container>
     </div>
   )
 }
 
-export default CatDetails
+export default CatDetails;
