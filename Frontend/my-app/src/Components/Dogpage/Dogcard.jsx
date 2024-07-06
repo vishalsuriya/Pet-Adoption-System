@@ -1,31 +1,12 @@
 import React, { useState } from "react";
 import { Button, Row, Col, Card } from "react-bootstrap";
 import "../Dogpage/dogStyle.css";
-import AdoptModal from "../Modal/DogModal";
-import { MdDeleteOutline } from "react-icons/md";
-import { GrUpdate } from "react-icons/gr";
+import PetModal from "../Modal/PetModal";
 
-const Dogcard = ({ dogs, onDelete }) => {
+const Dogcard = ({ dogs }) => {
   const [showModal, setShowModal] = useState(false);
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
-
-  const handleDelete = async () => {
-    try {
-      const response = await fetch(`http://localhost:8000/api/dogs/${dogs._id}`, {
-        method: 'DELETE',
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to delete dog');
-      }
-
-      onDelete(dogs._id);
-    } catch (error) {
-      console.error('Error deleting dog:', error);
-    }
-  };
-
   return (
     <div className="cards">
       <Card>
@@ -51,29 +32,6 @@ const Dogcard = ({ dogs, onDelete }) => {
                 style={{ height: "250px", width: "250px" }}
               />
             </Col>
-            <Col
-              style={{
-                display: "grid",
-                placeItems: "center",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "10px",
-              }}
-            >
-              <div style={{ marginBottom: "10px" }}>
-                <GrUpdate />
-              </div>
-              <button
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: 0,
-                }}
-                onClick={handleDelete}
-              >
-                <MdDeleteOutline size={24} color="red" />
-              </button>
-            </Col>
           </Row>
         </div>
         <div className="buttons">
@@ -83,7 +41,7 @@ const Dogcard = ({ dogs, onDelete }) => {
               <Button className="about-btn" onClick={handleShow}>
                 About me
               </Button>
-              <AdoptModal show={showModal} onHide={handleClose} dogs={dogs} />
+              <PetModal show={showModal} onHide={handleClose} Pets={dogs} />
             </Col>
           </Row>
         </div>

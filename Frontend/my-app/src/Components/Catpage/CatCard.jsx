@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import { Button, Card, Row, Col } from "react-bootstrap";
-import AdoptModal from "../Modal/DogModal";
 import "../Dogpage/dogStyle.css";
-import CatModal from "../Modal/CatModal";
-import { MdDeleteOutline } from "react-icons/md";
-import { GrUpdate } from "react-icons/gr";
+import PetModal from "../Modal/PetModal";
 const CatCard = ({ cats }) => {
-  const [showModal, setShowModal] = useState(false);
-
+ const [showModal, setShowModal] = useState(false);
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
-
   return (
     <div className="cards">
       <Card>
@@ -35,24 +30,9 @@ const CatCard = ({ cats }) => {
             </Col>
             <Col>
               <Card.Img
-                src={cats.img}
+                src={cats.image}
                 style={{ height: "250px", width: "250px" }}
               ></Card.Img>
-            </Col>
-            <Col
-              style={{
-                display: "grid",
-                placeItems: "center", // Aligns items both vertically and horizontally
-                gridTemplateColumns: "1fr 1fr", // Single column layout
-                gap: "10px", // Gap between grid items
-              }}
-            >
-              <div style={{ marginBottom: "10px" }}>
-                <GrUpdate/>
-              </div>
-              <div style={{ marginBottom: "10px" }}>
-                <MdDeleteOutline />
-              </div>
             </Col>
           </Row>
         </div>
@@ -63,7 +43,7 @@ const CatCard = ({ cats }) => {
               <Button className="about-btn" onClick={handleShow}>
                 About me
               </Button>
-              <CatModal show={showModal} onHide={handleClose} cats={cats} />
+              <PetModal show={showModal} onHide={handleClose} Pets={cats} />
             </Col>
           </Row>
         </div>
