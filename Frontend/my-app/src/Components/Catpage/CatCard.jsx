@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Card, Row, Col } from "react-bootstrap";
-import "../Dogpage/dogStyle.css";
 import PetModal from "../Modal/PetModal";
 
 const CatCard = ({ cats }) => {
@@ -35,16 +34,12 @@ const CatCard = ({ cats }) => {
             </Col>
           </Row>
         </div>
-        <div className="buttons">
-          <Row>
-            <Col>
-              <Button className="adopt-btn">Adopt me</Button>
-              <Button className="about-btn" onClick={handleShow}>
-                About me
-              </Button>
-              <PetModal show={showModal} onHide={handleClose} Pets={cats} />
-            </Col>
-          </Row>
+        <div className="d-flex gap-2 mb-3 ml-0">
+          <Button style={{width:'200px'}} id="gen-btn">Adopt me</Button>
+          <Button style={{width:'200px'}} id="gen-btn" onClick={handleShow}>
+            About me
+          </Button>
+          <PetModal show={showModal} onHide={handleClose} Pets={cats} />
         </div>
       </Card>
     </div>
