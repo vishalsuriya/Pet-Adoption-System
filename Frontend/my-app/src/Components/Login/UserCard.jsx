@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Container } from "react-bootstrap";
-import "./UserCard.css"; // Create a UserCard.css file for custom styles
+import "./UserCard.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const UserCard = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -18,9 +19,62 @@ const UserCard = () => {
 
   const [alert, setAlert] = useState({ show: false, message: "", variant: "" });
   const [isLoading, setIsLoading] = useState(false);
+  const [userData, setUserData] = useState([]);
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
 
-  const handleChange = (e) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/users")
+      .then((res) => {
+        console.log("User data fetched:", res.data);
+        setUserData(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching user data:", err);
+        setAlert({
+          show: true,
+          message: "Error fetching user data",
+          variant: "danger",
+        });
+      });
+  }, []);
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    console.log("Login email:", userEmail);
+    console.log("Login password:", userPassword);
+
+    console.log("User data for comparison:", userData); // Debug: log user data
+
+    const user = userData.find(
+      (user) =>
+        user.signupemail === userEmail && user.signuppassword === userPassword
+    );
+    console.log("Found user:", user);
+    if (user) {
+      navigate("/home");
+    } else {
+      setAlert({
+        show: true,
+        message: "Invalid email or password!",
+        variant: "danger",
+      });
+    }
+  };
+
+  const handleSignupChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleLoginEmailChange = (e) => {
+    setUserEmail(e.target.value);
+  };
+
+  const handleLoginPasswordChange = (e) => {
+    setUserPassword(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -37,6 +91,7 @@ const UserCard = () => {
           },
         }
       );
+      console.log("Signup response:", response.data);
       setAlert({
         show: true,
         message: "User Registered Successfully!",
@@ -48,6 +103,7 @@ const UserCard = () => {
         signuppassword: "",
       });
     } catch (error) {
+      console.error("Error during signup:", error);
       setAlert({
         show: true,
         message: "User Registration Failed!",
@@ -57,8 +113,14 @@ const UserCard = () => {
       setIsLoading(false);
     }
   };
+
+  const handleAdmin=(e)=>{
+    e.preventDefault();
+    navigate('/admin')
+  }
+
   return (
-    <>
+    <div >
       <Container
         className="d-flex justify-content-center align-items-center"
         style={{ height: "100px" }}
@@ -76,13 +138,15 @@ const UserCard = () => {
             <div className={`flip-card__inner ${isChecked ? "rotate" : ""}`}>
               <div className="flip-card__front">
                 <div className="title">Log in</div>
-                <Form className="flip-card__form">
+                <Form className="flip-card__form" onSubmit={handleLoginSubmit}>
                   <Form.Group controlId="formLoginEmail">
                     <Form.Control
                       className="flip-card__input"
                       type="email"
-                      name="loginname"
+                      name="loginemail"
                       placeholder="Email"
+                      value={userEmail}
+                      onChange={handleLoginEmailChange}
                     />
                   </Form.Group>
                   <Form.Group controlId="formLoginPassword">
@@ -91,13 +155,17 @@ const UserCard = () => {
                       type="password"
                       name="loginpassword"
                       placeholder="Password"
+                      value={userPassword}
+                      onChange={handleLoginPasswordChange}
                     />
                   </Form.Group>
                   <Button className="flip-card__btn" type="submit">
                     Log in
                   </Button>
                 </Form>
+               
               </div>
+              
               <div className="flip-card__back">
                 <div className="title">Sign up</div>
                 <Form className="flip-card__form" onSubmit={handleSubmit}>
@@ -106,7 +174,7 @@ const UserCard = () => {
                       className="flip-card__input"
                       type="text"
                       value={formData.signupname}
-                      onChange={handleChange}
+                      onChange={handleSignupChange}
                       placeholder="Name"
                       name="signupname"
                     />
@@ -116,7 +184,7 @@ const UserCard = () => {
                       className="flip-card__input"
                       type="email"
                       value={formData.signupemail}
-                      onChange={handleChange}
+                      onChange={handleSignupChange}
                       name="signupemail"
                       placeholder="Email"
                     />
@@ -126,7 +194,7 @@ const UserCard = () => {
                       className="flip-card__input"
                       type="password"
                       value={formData.signuppassword}
-                      onChange={handleChange}
+                      onChange={handleSignupChange}
                       placeholder="Password"
                       name="signuppassword"
                     />
@@ -144,10 +212,10 @@ const UserCard = () => {
           </label>
         </div>
       </Container>
-      <div className="admin_button">
-        <Button>Admin</Button>
-      </div>
-    </>
+      <Button className="admin_button" type="submit"style={{marginTop:"330px",marginLeft:"47.1%"}} onClick={handleAdmin}>
+                    Admin
+                  </Button>
+    </div>
   );
 };
 

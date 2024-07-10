@@ -28,9 +28,20 @@ app.post('/api/users',async(req,res)=>{
   catch(err){
     console.error('Error: ',err);
     res.status(500).send('Internal server Error');
-    
   }
 });
+
+app.get('/api/users', async(req,res)=>{
+
+  try {
+    const data = await Users.find();
+    res.status(200).send(data);
+  } catch (err) {
+    console.error('Database error:', err);
+    res.status(500).json({ error: 'Database error' });
+  }
+});
+
 app.post('/api/adopts', async (req, res) => {
   try {
     const newAdopt = new Adopt({
