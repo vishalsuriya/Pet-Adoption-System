@@ -17,7 +17,7 @@ const Navigationbar = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="/">PetPals Connect</Navbar.Brand>
+        <Navbar.Brand href="/home">PetPals Connect</Navbar.Brand>
         <Navbar.Toggle aria-controls="brandname" />
 
         <div className="d-flex justify-content-end">

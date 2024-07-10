@@ -6,13 +6,13 @@ import CatDetails from './Components/Catpage/CatDetails';
 import AdoptForm from './Components/AdoptPet/AdoptForm';
 // import AdoptModal from './Components/Modal/DogModal';
 import Pets from './Components/AllDetails/Pets';
-import './index.css'
-import AdminLogin from './Components/Admin/AdminLogin';
+// import './index.css'
+import Login from './Components/Login/Login';
 function App() {
   return (
     <>
     <Routes>
-      <Route path="/" element ={<AdminLogin />}/>
+      <Route path="/" element ={<Login />}/>
       <Route path="/home" element ={<Home />}/>
       <Route path="/PetAddForm" element ={<PetAddForm />}/>
       <Route path="/dogs/:id" element={<DogDetails/>} />
