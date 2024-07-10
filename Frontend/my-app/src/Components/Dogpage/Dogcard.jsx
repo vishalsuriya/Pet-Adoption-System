@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { Button, Row, Col, Card } from "react-bootstrap";
 import PetModal from "../Modal/PetModal";
-// Import your CSS file
-// import "../Dogpage/dogStyle.css";
-
+import { useNavigate } from "react-router-dom";
 const Dogcard = ({ dogs }) => {
   const [showModal, setShowModal] = useState(false);
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
+  const navigate = useNavigate()
 
+  const handleAdoptClick = () =>{
+    navigate("/adopt")
+  }
   return (
     <div className="cards">
       <Card>
@@ -37,7 +39,7 @@ const Dogcard = ({ dogs }) => {
           </Row>
         </div>
         <div className="d-flex gap-2 mb-3 ml-0">
-          <Button style={{width:'200px'}} id="gen-btn">Adopt me</Button>
+          <Button style={{width:'200px'}} id="gen-btn" onClick={handleAdoptClick}>Adopt me</Button>
           <Button style={{width:'200px'}} id="gen-btn" onClick={handleShow}>
             About me
           </Button>

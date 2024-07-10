@@ -14,6 +14,11 @@ const Navigationbar = () => {
   const handleDeleteClick = () => {
     navigate("/viewPetDetails");
   };
+
+  const handleLogoutClick = () => {
+    navigate("/");
+  };
+  
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -30,6 +35,9 @@ const Navigationbar = () => {
           </Button>
           <Button id="gen-btn" onClick={handleDeleteClick}>
             Pet_Details
+          </Button>
+          <Button id="gen-btn" onClick={handleLogoutClick}>
+            Logout
           </Button>
         </div>
       </Container>
