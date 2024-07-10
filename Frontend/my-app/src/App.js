@@ -5,8 +5,8 @@ import DogDetails from './Components/Dogpage/DogDetails';
 import CatDetails from './Components/Catpage/CatDetails';
 import AdoptForm from './Components/AdoptPet/AdoptForm';
 import Pets from './Components/AllDetails/Pets';
-import AdminLogin from './Components/Login/AdminLogin';
-import UserCard from './Components/Login/UserCard';
+import AdminLogin from './Components/Admin/AdminLogin';
+import UserCard from './Components/Users/UserCard';
 function App() {
   return (
     <>

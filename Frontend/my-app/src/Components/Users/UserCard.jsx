@@ -22,7 +22,7 @@ const UserCard = () => {
   const [userData, setUserData] = useState([]);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
-
+  const [isUser, setIsUser] = useState(true)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -116,7 +116,11 @@ const UserCard = () => {
 
   const handleAdmin=(e)=>{
     e.preventDefault();
-    navigate('/admin')
+    setIsUser(true)
+    
+    
+    console.log(isUser)
+    navigate('/admin',{ state : {isUser  : isUser}})
   }
 
   return (
@@ -212,7 +216,7 @@ const UserCard = () => {
           </label>
         </div>
       </Container>
-      <Button className="admin_button" type="submit"style={{marginTop:"330px",marginLeft:"47.1%"}} onClick={handleAdmin}>
+      <Button className="admin_button" style={{marginTop:"330px",marginLeft:"47.1%"}} onClick={handleAdmin}>
                     Admin
                   </Button>
     </div>

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./adminlogin.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 const AdminLogin = () => {
   const [adminData, setAdminData] = useState([]);
   const [adminEmail, setAdminEmail] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
 
+  const location = useLocation();
+  const { isUser } = location.state || {};
+  console.log(isUser)
   const navigate = useNavigate()
   useEffect(() => {
     axios
@@ -18,13 +21,12 @@ const AdminLogin = () => {
         console.error(error);
       });
   }, []);
-  console.log(adminData)
   const handleSubmit = (e) =>{
     e.preventDefault()
     const admin = adminData.find((admin) => admin.email === adminEmail && admin.password === adminPassword);
     console.log(admin)
     if(admin){
-        navigate('/home')
+        navigate('/home', {state : {isUser : isUser}})
     }
   }
   return (
