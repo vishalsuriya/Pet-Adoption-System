@@ -14,10 +14,15 @@ const Navigationbar = () => {
   const handleDeleteClick = () => {
     navigate("/viewPetDetails");
   };
+
+  const handleLogoutClick = () => {
+    navigate("/");
+  };
+  
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="/">PetPals Connect</Navbar.Brand>
+        <Navbar.Brand href="/home">PetPals Connect</Navbar.Brand>
         <Navbar.Toggle aria-controls="brandname" />
 
         <div className="d-flex justify-content-end">
@@ -30,6 +35,9 @@ const Navigationbar = () => {
           </Button>
           <Button id="gen-btn" onClick={handleDeleteClick}>
             Pet_Details
+          </Button>
+          <Button id="gen-btn" onClick={handleLogoutClick}>
+            Logout
           </Button>
         </div>
       </Container>

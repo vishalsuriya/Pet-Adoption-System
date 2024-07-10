@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import PetModal from "../Modal/PetModal";
-
+import { useNavigate } from "react-router-dom";
 const CatCard = ({ cats }) => {
   const [showModal, setShowModal] = useState(false);
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
-
+  const navigate = useNavigate();
+  const handleAdoptClick = () => {
+    navigate("/adopt");
+  };
   return (
     <div className="cards">
       <Card>
@@ -22,7 +25,9 @@ const CatCard = ({ cats }) => {
                   <li>Age: {cats.age}</li>
                   <li>Gender: {cats.gender}</li>
                   <li>Species: {cats.species}</li>
-                  <li>Special Characteristics: {cats.specialCharacteristics}</li>
+                  <li>
+                    Special Characteristics: {cats.specialCharacteristics}
+                  </li>
                 </ul>
               </Card.Body>
             </Col>
@@ -35,8 +40,10 @@ const CatCard = ({ cats }) => {
           </Row>
         </div>
         <div className="d-flex gap-2 mb-3 ml-0">
-          <Button style={{width:'200px'}} id="gen-btn">Adopt me</Button>
-          <Button style={{width:'200px'}} id="gen-btn" onClick={handleShow}>
+          <Button id="gen-btn" onClick={handleAdoptClick}>
+            Adopt me
+          </Button>
+          <Button style={{ width: "200px" }} id="gen-btn" onClick={handleShow}>
             About me
           </Button>
           <PetModal show={showModal} onHide={handleClose} Pets={cats} />

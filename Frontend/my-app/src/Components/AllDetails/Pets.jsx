@@ -6,14 +6,15 @@ import { GrUpdate } from "react-icons/gr";
 import Navigationbar from "../Navigationbar";
 import PetModal from "../Modal/PetModal";
 import UpdatePetModal from "./UpdatePetModal";
-
+import { useNavigate } from "react-router-dom";
 const Pets = () => {
   const [pets, setPets] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedPet, setSelectedPet] = useState(null);
   const [updatePet, setUpdatePet] = useState(null);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
-
+  const navigate = useNavigate()
+  
   const handleShow = (pet) => {
     setSelectedPet(pet);
     setShowModal(true);
@@ -52,6 +53,10 @@ const Pets = () => {
     setUpdatePet(pet);
     setShowUpdateModal(true);
   };
+
+  const handleAdoptClick = () =>{
+    navigate("/adopt")
+  }
 
   return (
     <>
@@ -113,6 +118,7 @@ const Pets = () => {
                       cursor: "pointer",
                       padding: 0,
                     }}
+                    
                     onClick={() => handleDelete(pet._id)}
                   >
                     <MdDeleteOutline size={24} color="red" />
@@ -123,8 +129,8 @@ const Pets = () => {
             <div className="buttons">
               <Row>
                 <Col>
-                  <Button className="adopt-btn">Adopt me</Button>
-                  <Button className="about-btn" onClick={() => handleShow(pet)}>
+                  <Button  id="gen-btn" onClick={handleAdoptClick}>Adopt me</Button>
+                  <Button  id="gen-btn" onClick={() => handleShow(pet)}>
                     About me
                   </Button>
                 </Col>
