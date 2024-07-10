@@ -77,6 +77,14 @@ app.get('/api/admin', async(req,res)=>{
     res.status(500).json({ error: 'Database error' });
   }
 });
+app.put('/api/pets/update/:id', async (req, res) => {
+  try {
+    const updatedPet = await Pets.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updatedPet);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
