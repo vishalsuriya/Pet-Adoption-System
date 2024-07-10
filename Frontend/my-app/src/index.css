@@ -43,7 +43,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
-  /* .button {
+  .button {
     background-color: #4CAF50;
     color: #212121;
     padding: 10px 15px;
@@ -52,7 +52,7 @@
     border: 2px solid transparent;
     border-radius: 15px;
     cursor: pointer;
-  } */
+  }
   
   .dropdown-content {
     display: none;

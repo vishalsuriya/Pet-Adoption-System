@@ -26,7 +26,7 @@ const Navigationbar1 = () => {
             Dogs and Puppies
           </Dropdown.Toggle>
           <Dropdown.Menu
-            style={{ marginLeft: "300px" }}
+           
             className="dropdown-content"
           >
             {pets
@@ -49,7 +49,7 @@ const Navigationbar1 = () => {
             Cats and Kittens
           </Dropdown.Toggle>
           <Dropdown.Menu
-            style={{ marginLeft: "300px" }}
+           
             className="dropdown-content"
           >
             {pets
