@@ -19,9 +19,9 @@ const UserCard = () => {
   const [alert, setAlert] = useState({ show: false, message: "", variant: "" });
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = (e) =>{
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +29,7 @@ const UserCard = () => {
     setAlert({ show: false, message: "", variant: "" });
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/signup",
+        "http://localhost:8000/api/users",
         formData,
         {
           headers: {

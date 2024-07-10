@@ -7,6 +7,7 @@ const connectDB = require("./connection");
 const Pets = require("./Schemas/PetSchema");
 const Adopt = require("./Schemas/AdoptSchema");
 const Admin = require("./Schemas/AdminSchema")
+const Users = require("./Schemas/UserSchema");
 connectDB();
 dotenv.config();
 const app = express();
@@ -16,6 +17,20 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.post('/api/users',async(req,res)=>{
+  try{
+    const newUsers = new Users({
+      ...req.body
+    });
+    const savedUsers = await newUsers.save();
+    res.status(200).json(savedUsers);
+  }
+  catch(err){
+    console.error('Error: ',err);
+    res.status(500).send('Internal server Error');
+    
+  }
+});
 app.post('/api/adopts', async (req, res) => {
   try {
     const newAdopt = new Adopt({
