@@ -6,7 +6,11 @@ import PetList from "./PetList";
 import Footer from "./Footer";
 import HeroSection from "./HeroSection";
 import Hero from "./Hero";
+import {useLocation} from 'react-router-dom'
 const Home = () => {
+
+  const location = useLocation();
+  const { isUser } = location.state || {};
   return (
     <>
       <Navigationbar />
