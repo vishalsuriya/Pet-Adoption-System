@@ -15,6 +15,7 @@ const UserCard = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const [isUser, setIsUser] = useState(true)
   const navigate = useNavigate();
 
   const handleToggle = () => {
@@ -108,7 +109,8 @@ const UserCard = () => {
 
   const handleAdmin = (e) => {
     e.preventDefault();
-    navigate('/admin');
+    setIsUser(true)
+    navigate('/admin', {state:{isUser : isUser}});
   };
 
   return (
