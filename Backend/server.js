@@ -2,12 +2,14 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const { ObjectId } = require("mongodb"); // Import ObjectId from mongodb
+const { ObjectId } = require("mongodb"); 
 const connectDB = require("./connection");
 const Pets = require("./Schemas/PetSchema");
 const Adopt = require("./Schemas/AdoptSchema");
 const Admin = require("./Schemas/AdminSchema")
 const Users = require("./Schemas/UserSchema");
+const bcrypt = require("bcrypt");
+const saltRounds =10;
 connectDB();
 dotenv.config();
 const app = express();
@@ -17,30 +19,51 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/api/users',async(req,res)=>{
-  try{
-    const newUsers = new Users({
-      ...req.body
-    });
-    const savedUsers = await newUsers.save();
-    res.status(200).json(savedUsers);
-  }
-  catch(err){
-    console.error('Error: ',err);
-    res.status(500).send('Internal server Error');
-  }
-});
-
-app.get('/api/users', async(req,res)=>{
-
+app.post('/api/users', async (req, res) => {
   try {
-    const data = await Users.find();
-    res.status(200).send(data);
+    const { username, email, password } = req.body;
+
+    if (!username || !email || !password) {
+      return res.status(400).json({ error: 'All fields are required' });
+    }
+
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hash = await bcrypt.hash(password, salt);
+
+    const newUser = new Users({
+      username,
+      email,
+      password: hash
+    });
+
+    const savedUser = await newUser.save();
+    res.status(201).json(savedUser); 
   } catch (err) {
-    console.error('Database error:', err);
-    res.status(500).json({ error: 'Database error' });
+    res.status(500).send('Internal server error');
   }
 });
+
+app.post('/api/users/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await Users.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ success: false, message: "Invalid email or password" });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ success: false, message: "Invalid email or password" });
+    }
+
+    res.status(200).json({ success: true, user });
+  } catch (err) {
+    console.error('Error:', err);
+    res.status(500).send('Internal server error');
+  }
+});
+
 
 app.post('/api/adopts', async (req, res) => {
   try {
@@ -64,7 +87,6 @@ app.post('/api/pets', async (req, res) => {
     const savedPet = await newPet.save();
     res.status(200).json(savedPet);
   } catch (err) {
-    console.error('Error:', err);
     res.status(500).send('Internal Server Error');
   }
 });

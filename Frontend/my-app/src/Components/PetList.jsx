@@ -1,63 +1,50 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import {useNavigate} from 'react-router-dom'
+import { Button, Card, Container, Row, Col } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
+import './PetList.css';
 
 const PetList = () => {
-  
   const navigate = useNavigate();
 
-const handleDogClick = () =>{
-    navigate('/dogs')
-}
-const handleCatClick = () =>{
-  navigate('/cats')
-}
+  const handleDogClick = () => {
+    navigate('/dogs');
+  };
+
+  const handleCatClick = () => {
+    navigate('/cats');
+  };
+
   return (
-    <Container  >
+    <Container className="pet-list-container">
       <Row className="justify-content-center">
         <Col md={6}>
-          <div
-            className="d-grid gap-4 bg"
-            style={{
-              gridTemplateColumns: "repeat(auto-fill, minmax(12rem, 1fr))",
-            }}
-          >
-            <Card className="text-center">
+          <div className="d-grid gap-4 pet-grid">
+            <Card className="text-center pet-card">
               <Card.Img
                 variant="top"
                 src="https://i.pinimg.com/236x/fe/de/cc/fedecc5f7c08330b01c1088d8f98c0c3.jpg"
+                alt="Dogs and Puppies"
               />
               <Card.Body>
                 <Card.Title>Dogs and Puppies</Card.Title>
-                {/* <Card.Text>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-                </Card.Text> */}
                 <div className="d-grid">
-                  <Button onClick = {handleDogClick}id="gen-btn" variant="outline-success">
+                  <Button onClick={handleDogClick} id="gen-btn" variant="outline-success">
                     Dogs
                   </Button>
                 </div>
               </Card.Body>
             </Card>
 
-            <Card className="text-center">
+            <Card className="text-center pet-card">
               <Card.Img
                 variant="top"
                 src="https://i.pinimg.com/236x/a3/a2/98/a3a2981c812d1873cf25ff393babde00.jpg"
+                alt="Cats and Kittens"
               />
               <Card.Body>
                 <Card.Title>Cats and Kittens</Card.Title>
-                {/* <Card.Text>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-                </Card.Text> */}
                 <div className="d-grid">
-                  <Button onClick = {handleCatClick} id="gen-btn" variant="outline-success">
+                  <Button onClick={handleCatClick} id="gen-btn" variant="outline-success">
                     Cats
                   </Button>
                 </div>
