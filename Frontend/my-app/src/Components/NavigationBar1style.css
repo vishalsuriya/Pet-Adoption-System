@@ -7,7 +7,7 @@ body{
 }
 .nav-justify {
     justify-content: space-around;
-    background-color:#df1fe0 ;
+    background-color:#b34c6f ;
   }
   
   .nav-item {
@@ -16,12 +16,12 @@ body{
   
   /* Dropdown styles */
   .dropdown .dropdown-toggle {
-    background-color: #df1fe0 !important;
-    border-color: #df1fe0 !important;
+    background-color: #b34c6f !important;
+    border-color: #b34c6f !important;
   }
   
   .dropdown .dropdown-menu {
-    background-color: #c464c4 !important;
+    background-color: #eda1ba !important;
   }
   
   .dropdown .dropdown-item {
@@ -29,7 +29,7 @@ body{
   }
   
   .dropdown .dropdown-item:hover {
-    background-color: #df1fe0 !important;
+    background-color: #f55af5 !important;
     color: #ffffff !important;
   }
   
