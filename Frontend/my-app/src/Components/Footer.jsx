@@ -9,16 +9,16 @@ import {
 
 export default function Footer() {
   return (
-    <MDBFooter bgColor="light" className="text-center text-lg-start text-muted">
+    <MDBFooter style={{backgroundColor:"#df1fe0"}} className="text-center text-lg-start text-muted">
       <section className="">
         <MDBContainer className="text-center text-md-start mt-5">
           <MDBRow className="mt-3">
             <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4 mt-3">
-              <h6 className="text-uppercase fw-bold mb-4">
-                <MDBIcon color="secondary" icon="gem"  />
+              <h6 className="text-uppercase fw-bold mb-4" style={{color:"#fcfcfc"}}>
+                <MDBIcon   icon="gem"  />
                 PetPals Connect
               </h6>
-              <p className="text-justify">
+              <p className="text-justify" style={{color:"#fcfcfc"}}>
                 PetPals Connect connects pets in need with loving homes. Browse
                 our listings and find your perfect companion today. Join us in
                 making a difference in a pet's life.
@@ -26,22 +26,22 @@ export default function Footer() {
             </MDBCol>
 
 
-            <MDBCol md="4" lg="3" xl="3" className="mx-auto mb-md-0 mb-4 mt-3">
-              <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
+            <MDBCol md="4" lg="3" xl="3" className="mx-auto mb-md-0 mb-4 mt-3" style={{color:"#fcfcfc"}}>
+              <h6 className="text-uppercase fw-bold mb-4" >Contact</h6>
               <p>
-                <MDBIcon color="secondary" icon="home" className="me-2" />
+                <MDBIcon style={{color:"#fcfcfc"}} icon="home" className="me-2" />
                 New York, NY 10012, US
               </p>
               <p>
-                <MDBIcon color="secondary" icon="envelope" className="me-3" />
+                <MDBIcon style={{color:"#fcfcfc"}} icon="envelope" className="me-3" />
                 info@example.com
               </p>
               <p>
-                <MDBIcon color="secondary" icon="phone" className="me-3" /> + 01
+                <MDBIcon style={{color:"#fcfcfc"}} icon="phone" className="me-3" /> + 01
                 234 567 88
               </p>
               <p>
-                <MDBIcon color="secondary" icon="print" className="me-3" /> + 01
+                <MDBIcon style={{color:"#fcfcfc"}} icon="print" className="me-3" /> + 01
                 234 567 89
               </p>
             </MDBCol>

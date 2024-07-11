@@ -1,0 +1,35 @@
+/* Styles for Navigationbar1 component */
+
+/* General Nav styles */
+
+body{
+    background-color: #ffffff;
+}
+.nav-justify {
+    justify-content: space-around;
+    background-color:#df1fe0 ;
+  }
+  
+  .nav-item {
+    margin: 0 10px;
+  }
+  
+  /* Dropdown styles */
+  .dropdown .dropdown-toggle {
+    background-color: #df1fe0 !important;
+    border-color: #df1fe0 !important;
+  }
+  
+  .dropdown .dropdown-menu {
+    background-color: #c464c4 !important;
+  }
+  
+  .dropdown .dropdown-item {
+    color: #000000 !important;
+  }
+  
+  .dropdown .dropdown-item:hover {
+    background-color: #df1fe0 !important;
+    color: #ffffff !important;
+  }
+  
