@@ -16,7 +16,7 @@
   
   .pet-card:hover {
     transform: scale(1.05);
-    border-color: #28a745;
+    border-color: #b34c6f;
   }
   
 
@@ -41,7 +41,7 @@
       border-color: transparent;
     }
     100% {
-      border-color: #28a745; 
+      border-color: #ff6d9e; 
     }
   }
   
