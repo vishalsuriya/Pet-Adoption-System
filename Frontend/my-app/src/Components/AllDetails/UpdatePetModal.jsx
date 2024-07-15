@@ -17,16 +17,19 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:8000/api/pets/update/${petData._id}`, petData);
+      const response = await axios.put(
+        `http://localhost:8000/api/pets/update/${petData._id}`,
+        petData
+      );
       if (response.status === 200) {
         onUpdate(petData);
         onHide();
         window.location.reload(true);
       } else {
-        console.error('Failed to update pet');
+        console.error("Failed to update pet");
       }
     } catch (error) {
-      console.error('Error updating pet:', error);
+      console.error("Error updating pet:", error);
     }
   };
 
@@ -42,7 +45,7 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
             <Form.Control
               type="text"
               name="petName"
-              value={petData.petName || ''}
+              value={petData.petName || ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -51,7 +54,7 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
             <Form.Control
               type="text"
               name="breed"
-              value={petData.breed || ''}
+              value={petData.breed || ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -60,7 +63,7 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
             <Form.Control
               type="text"
               name="species"
-              value={petData.species || ''}
+              value={petData.species || ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -69,7 +72,7 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
             <Form.Control
               type="text"
               name="age"
-              value={petData.age || ''}
+              value={petData.age || ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -78,7 +81,7 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
             <Form.Control
               type="text"
               name="gender"
-              value={petData.gender || ''}
+              value={petData.gender || ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -87,7 +90,7 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
             <Form.Control
               type="text"
               name="origin"
-              value={petData.origin || ''}
+              value={petData.origin || ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -96,7 +99,7 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
             <Form.Control
               type="text"
               name="size"
-              value={petData.size || ''}
+              value={petData.size || ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -105,7 +108,7 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
             <Form.Control
               type="text"
               name="weight"
-              value={petData.weight || ''}
+              value={petData.weight || ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -114,7 +117,7 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
             <Form.Control
               type="text"
               name="temperament"
-              value={petData.temperament || ''}
+              value={petData.temperament || ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -123,7 +126,7 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
             <Form.Control
               type="text"
               name="coat"
-              value={petData.coat || ''}
+              value={petData.coat || ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -132,7 +135,7 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
             <Form.Control
               type="text"
               name="lifeSpan"
-              value={petData.lifeSpan || ''}
+              value={petData.lifeSpan || ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -141,13 +144,11 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
             <Form.Control
               type="text"
               name="specialCharacteristics"
-              value={petData.specialCharacteristics || ''}
+              value={petData.specialCharacteristics || ""}
               onChange={handleChange}
             />
           </Form.Group>
-          <Button variant="primary" type="submit"
-          onClick={handleSubmit}
-          >
+          <Button variant="primary" type="submit" className="mt-3">
             Update
           </Button>
         </Form>
@@ -157,4 +158,3 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
 };
 
 export default UpdatePetModal;
-

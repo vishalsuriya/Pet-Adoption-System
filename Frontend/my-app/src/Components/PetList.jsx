@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import './PetList.css';
+import './AllDetails/styles.css';
 
 const PetList = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const PetList = () => {
               <Card.Body>
                 <Card.Title>Dogs and Puppies</Card.Title>
                 <div className="d-grid">
-                  <Button onClick={handleDogClick} id="gen-btn" variant="outline-success">
+                  <Button onClick={handleDogClick} className="adopt-btn">
                     Dogs
                   </Button>
                 </div>
@@ -44,7 +45,7 @@ const PetList = () => {
               <Card.Body>
                 <Card.Title>Cats and Kittens</Card.Title>
                 <div className="d-grid">
-                  <Button onClick={handleCatClick} id="gen-btn" variant="outline-success">
+                  <Button onClick={handleCatClick} className="adopt-btn">
                     Cats
                   </Button>
                 </div>
