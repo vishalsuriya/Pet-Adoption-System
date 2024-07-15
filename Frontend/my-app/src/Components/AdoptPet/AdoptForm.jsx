@@ -24,24 +24,21 @@ function AdoptForm() {
     agePreference: "",
     sizePreference: "",
     genderPreference: "",
-    timeAvailability: "", // Added default empty string
-    veterinaryCare: false, // Added default value for checkbox
-    indoorOutdoor: "", // Assuming this will be handled as string for options
-    petSupervision: "", // Added default empty string
+    timeAvailability: "",
+    veterinaryCare: false,
+    indoorOutdoor: "",
+    petSupervision: "",
   });
+
   const handleChange = (e) => {
     const { id, value, type, checked } = e.target;
-
-    // For checkboxes, handle checked state
-    const newValue = type === "checkbox" ? (checked ? value : "") : value;
-
-    // Update state using spread operator
+    const newValue = type === "checkbox" ? checked : value;
     setFormData({ ...formData, [id]: newValue });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData); // Check formData in console
+    console.log(formData);
 
     try {
       const response = await axios.post(
@@ -49,13 +46,13 @@ function AdoptForm() {
         formData,
         {
           headers: {
-            "Content-Type": "application/json", // Ensure correct content type
-          },
+            "Content-Type": "application/json",
+          }
         }
       );
-      console.log("Response:", response.data); // Log response data
+      console.log("Response:", response.data);
     } catch (error) {
-      console.log("Error:", error.response); // Log response error
+      console.log("Error:", error.response);
     }
   };
 
@@ -63,9 +60,8 @@ function AdoptForm() {
     <>
       <Navigationbar />
       <Form className="form-container" onSubmit={handleSubmit}>
-        <h2 style={{ textAlign: "center" }}>Pet Adoption Application Form</h2>
+        <h2 className="form-title">Pet Adoption Application Form</h2>
 
-        {/* Adopter Information */}
         <h3>Adopter Information</h3>
         <Form.Group className="mb-3" controlId="fullName">
           <Form.Label>Full Name:</Form.Label>
@@ -99,10 +95,9 @@ function AdoptForm() {
             type="text"
             name="gender"
             className="input"
-
             value={formData.gender}
             onChange={handleChange}
-          ></Form.Control>
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="address">
@@ -111,7 +106,6 @@ function AdoptForm() {
             type="text"
             name="address"
             className="input"
-
             placeholder="Enter Address"
             autoComplete="off"
             value={formData.address}
@@ -124,7 +118,6 @@ function AdoptForm() {
           <Form.Control
             type="text"
             className="input"
-
             name="occupation"
             placeholder="Enter Occupation"
             autoComplete="off"
@@ -138,7 +131,6 @@ function AdoptForm() {
           <Form.Control
             type="text"
             className="input"
-
             name="phone"
             placeholder="Enter Phone Number"
             autoComplete="off"
@@ -152,7 +144,6 @@ function AdoptForm() {
           <Form.Control
             type="email"
             className="input"
-
             name="email"
             placeholder="Enter Email Address"
             autoComplete="off"
@@ -161,14 +152,12 @@ function AdoptForm() {
           />
         </Form.Group>
 
-        {/* Home and Family Information */}
         <h3>Home and Family Information</h3>
         <Form.Group className="mb-3" controlId="homeType">
           <Form.Label>Type of Home:</Form.Label>
           <Form.Control
             type="text"
             className="input"
-
             name="homeType"
             placeholder="Enter Type of Home"
             autoComplete="off"
@@ -182,7 +171,6 @@ function AdoptForm() {
           <Form.Control
             type="number"
             className="input"
-
             name="adultsInFamily"
             placeholder="Enter Number of Adults"
             autoComplete="off"
@@ -196,7 +184,6 @@ function AdoptForm() {
           <Form.Control
             type="text"
             className="input"
-
             name="childrenInFamily"
             placeholder="Enter Number and Ages of Children"
             autoComplete="off"
@@ -210,7 +197,6 @@ function AdoptForm() {
           <Form.Control
             type="text"
             className="input"
-
             name="petsInHome"
             placeholder="Enter Other Pets Information"
             autoComplete="off"
@@ -219,16 +205,14 @@ function AdoptForm() {
           />
         </Form.Group>
 
-        {/* Pet Preferences */}
         <h3>Pet Preferences</h3>
         <Form.Group className="mb-3" controlId="petsname">
           <Form.Label>Pet Name:</Form.Label>
           <Form.Control
             type="text"
             className="input"
-
             name="petsname"
-            placeholder="Enter Pet name"
+            placeholder="Enter Pet Name"
             autoComplete="off"
             value={formData.petsname}
             onChange={handleChange}
@@ -240,7 +224,6 @@ function AdoptForm() {
           <Form.Control
             type="text"
             className="input"
-
             name="species"
             placeholder="Enter Preferred Species"
             autoComplete="off"
@@ -254,7 +237,6 @@ function AdoptForm() {
           <Form.Control
             type="text"
             className="input"
-
             name="breed"
             placeholder="Enter Preferred Breed"
             autoComplete="off"
@@ -269,7 +251,6 @@ function AdoptForm() {
             type="text"
             name="agePreference"
             className="input"
-
             placeholder="Enter Preferred Age"
             autoComplete="off"
             value={formData.agePreference}
@@ -283,7 +264,6 @@ function AdoptForm() {
             type="text"
             name="sizePreference"
             className="input"
-
             placeholder="Enter Preferred Size"
             autoComplete="off"
             value={formData.sizePreference}
@@ -296,21 +276,18 @@ function AdoptForm() {
           <Form.Control
             type="text"
             className="input"
-
             name="genderPreference"
             value={formData.genderPreference}
             onChange={handleChange}
-          ></Form.Control>
+          />
         </Form.Group>
 
-        {/* Pet Care Commitment */}
         <h3>Pet Care Commitment</h3>
         <Form.Group className="mb-3" controlId="timeAvailability">
           <Form.Label>Availability to Care for Pet:</Form.Label>
           <Form.Control
             as="textarea"
             className="input"
-
             name="timeAvailability"
             placeholder="Describe your availability to care for the pet"
             autoComplete="off"
@@ -322,20 +299,19 @@ function AdoptForm() {
         <Form.Group className="mb-3" controlId="veterinaryCare">
           <Form.Check
             type="checkbox"
-
             name="veterinaryCare"
             label="I agree to provide regular veterinary care"
             checked={formData.veterinaryCare}
             onChange={handleChange}
           />
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="petSupervision">
           <Form.Label>Supervision and Safety:</Form.Label>
           <Form.Control
             as="textarea"
             name="petSupervision"
             className="input"
-
             placeholder="Describe how you plan to supervise and ensure the safety of the pet"
             autoComplete="off"
             value={formData.petSupervision}
@@ -343,10 +319,8 @@ function AdoptForm() {
           />
         </Form.Group>
 
-        {/* Agreement and Submit */}
         <Form.Group className="mb-3" controlId="agreement">
           <Form.Check
-
             type="checkbox"
             name="agreement"
             label="I agree to the terms and conditions of pet adoption."

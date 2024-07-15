@@ -28,7 +28,7 @@ const PetList = () => {
               <Card.Body>
                 <Card.Title>Dogs and Puppies</Card.Title>
                 <div className="d-grid">
-                  <Button onClick={handleDogClick} id="gen-btn" variant="outline-success">
+                  <Button onClick={handleDogClick} variant="outline-success">
                     Dogs
                   </Button>
                 </div>
@@ -44,7 +44,7 @@ const PetList = () => {
               <Card.Body>
                 <Card.Title>Cats and Kittens</Card.Title>
                 <div className="d-grid">
-                  <Button onClick={handleCatClick} id="gen-btn" variant="outline-success">
+                  <Button onClick={handleCatClick} variant="outline-success">
                     Cats
                   </Button>
                 </div>
