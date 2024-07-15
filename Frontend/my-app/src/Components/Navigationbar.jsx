@@ -36,12 +36,12 @@ const Navigationbar = () => {
                 Pet_Add
               </Button>
 
-              <Button onClick={handleDeleteClick} className="logout-btn">
+              <Button onClick={handleDeleteClick} style={{ marginRight: "20px" }} className="logout-btn">
                 Pet_Details
               </Button>
             </>
           )}
-          <Button onClick={handleLogoutClick} className="logout-btn">
+          <Button onClick={handleLogoutClick} style={{ marginRight: "20px" }} className="logout-btn">
             Logout
           </Button>
         </div>
