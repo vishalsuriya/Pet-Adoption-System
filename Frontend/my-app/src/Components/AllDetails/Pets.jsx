@@ -7,7 +7,7 @@ import Navigationbar from "../Navigationbar";
 import PetModal from "../Modal/PetModal";
 import UpdatePetModal from "./UpdatePetModal";
 import { useNavigate } from "react-router-dom";
-
+import './styles.css'
 const Pets = () => {
   const [pets, setPets] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -102,15 +102,13 @@ const Pets = () => {
                     <MdDeleteOutline size={24} />
                   </Button>
                   <Button
-                    variant="primary"
-                    className="m-2"
+                    className="adopt-btn m-2"
                     onClick={handleAdoptClick}
                   >
                     Adopt me
                   </Button>
                   <Button
-                    variant="info"
-                    className="m-2"
+                    className="about-btn m-2"
                     onClick={() => handleShow(pet)}
                   >
                     About me

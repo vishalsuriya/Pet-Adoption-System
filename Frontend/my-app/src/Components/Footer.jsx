@@ -30,19 +30,19 @@ export default function Footer() {
               <h6 className="text-uppercase fw-bold mb-4" >Contact</h6>
               <p>
                 <MDBIcon style={{color:"#fcfcfc"}} icon="home" className="me-2" />
-                New York, NY 10012, US
+                Coimbatore, Tamilnadu
               </p>
               <p>
                 <MDBIcon style={{color:"#fcfcfc"}} icon="envelope" className="me-3" />
-                info@example.com
+                petadoptcbe@gmail.com
               </p>
               <p>
-                <MDBIcon style={{color:"#fcfcfc"}} icon="phone" className="me-3" /> + 01
-                234 567 88
+                <MDBIcon style={{color:"#fcfcfc"}} icon="phone" className="me-3" /> + 91
+                7389988153
               </p>
               <p>
-                <MDBIcon style={{color:"#fcfcfc"}} icon="print" className="me-3" /> + 01
-                234 567 89
+                <MDBIcon style={{color:"#fcfcfc"}} icon="print" className="me-3" /> + 91
+                8564750254
               </p>
             </MDBCol>
           </MDBRow>
@@ -51,10 +51,10 @@ export default function Footer() {
 
       <div
         className="text-center p-4"
-        style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
+        style={{ backgroundColor: "rgba(0, 0, 0, 0)" , color:'black'}}
       >
-        © 2021 Copyright:
-        <a className="text-reset fw-bold" href="#">
+        © 2024 Copyright:
+        <a className="text-reset fw-bold" href="#" >
           PetpalsConnect.com
         </a>
       </div>

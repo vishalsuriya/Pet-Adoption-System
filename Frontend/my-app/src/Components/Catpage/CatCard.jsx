@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import PetModal from "../Modal/PetModal";
 import { useNavigate } from "react-router-dom";
-
+import '../AllDetails/styles.css'
 const CatCard = ({ cats }) => {
   const [showModal, setShowModal] = useState(false);
   const handleShow = () => setShowModal(true);
@@ -37,16 +37,16 @@ const CatCard = ({ cats }) => {
             </Col>
             <Col md={4} className="d-flex flex-column align-items-center">
               <Button
-                variant="primary"
-                className="mb-2"
+                // variant="primary"
+                className="adopt-btn mb-2"
                 style={{ width: '200px' }}
                 onClick={handleAdoptClick}
               >
                 Adopt me
               </Button>
               <Button
-                variant="info"
-                className="mb-2"
+                // variant="info"
+                className="about-btn mb-2"
                 style={{ width: '200px' }}
                 onClick={handleShow}
               >

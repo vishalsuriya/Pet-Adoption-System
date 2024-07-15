@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Container, Button } from "react-bootstrap";
 import { useNavigate, useLocation } from "react-router-dom";
+import './AllDetails/styles.css'
 
 const Navigationbar = () => {
   const navigate = useNavigate();
@@ -30,16 +31,17 @@ const Navigationbar = () => {
               <Button
                 onClick={handleAddClick}
                 style={{ marginRight: "20px" }}
+                className="logout-btn"
               >
                 Pet_Add
               </Button>
 
-              <Button onClick={handleDeleteClick}>
+              <Button onClick={handleDeleteClick} className="logout-btn">
                 Pet_Details
               </Button>
             </>
           )}
-          <Button onClick={handleLogoutClick}>
+          <Button onClick={handleLogoutClick} className="logout-btn">
             Logout
           </Button>
         </div>
