@@ -5,18 +5,20 @@ import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
   const navigate = useNavigate();
+
+  // Function to navigate to the adoption page
   const handleClick = () => {
     navigate("/adopt");
   };
 
   return (
-    <Container className="col-xxl-8 px-4 py-5" style={{backgroundColor:""}}>
-      <Row className="flex-lg-row-reverse align-items-center g-5 py-5" style={{borderColor:'#f75e38'}}>
+    <Container className="col-xxl-8 px-4 py-5" style={{ backgroundColor: "" }}>
+      <Row className="flex-lg-row-reverse align-items-center g-5 py-5" style={{ borderColor: '#f75e38' }}>
         <Col xs={10} sm={8} lg={6}>
           <Image
             src="https://i.pinimg.com/236x/0f/ea/8c/0fea8c0d46e7d3824403f681cfde019b.jpg"
             className="d-block mx-lg-auto img-fluid"
-            alt="Bootstrap Themes"
+            alt="Pet Adoption"
             width={350}
             height={350}
             loading="lazy"
