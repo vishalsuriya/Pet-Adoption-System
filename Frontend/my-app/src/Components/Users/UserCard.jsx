@@ -40,7 +40,7 @@ const UserCard = () => {
     setAlert({ show: false, message: "", variant: "" });
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/users",
+        "https://pet-adoption-system-server.onrender.com/api/users",
         formData,
         {
           headers: {
@@ -77,7 +77,7 @@ const UserCard = () => {
     setAlert({ show: false, message: "", variant: "" });
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/users/login",
+        "https://pet-adoption-system-server.onrender.com/api/users/login",
         { email: userEmail, password: userPassword },
         {
           headers: {

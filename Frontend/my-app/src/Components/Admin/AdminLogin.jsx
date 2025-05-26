@@ -13,7 +13,7 @@ const AdminLogin = () => {
   const navigate = useNavigate()
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/admin")
+      .get("https://pet-adoption-system-server.onrender.com/api/admin")
       .then((response) => {
         setAdminData(response.data);
       })

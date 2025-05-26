@@ -30,14 +30,14 @@ const Pets = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/petdata")
+      .get("https://pet-adoption-system-server.onrender.com/api/petdata")
       .then((response) => setPets(response.data))
       .catch((error) => console.error(error));
   }, []);
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/pets/delete/${id}`, {
+      const response = await fetch(`https://pet-adoption-system-server.onrender.com/api/pets/delete/${id}`, {
         method: 'DELETE',
       });
 

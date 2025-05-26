@@ -12,7 +12,7 @@ const DogDetails = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/petdata")
+      .get("https://pet-adoption-system-server.onrender.com/api/petdata")
       .then((response) => {
         setDogData(response.data);
       })

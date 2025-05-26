@@ -18,7 +18,7 @@ const UpdatePetModal = ({ show, onHide, pet, onUpdate }) => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/pets/update/${petData._id}`,
+        `https://pet-adoption-system-server.onrender.com/api/pets/update/${petData._id}`,
         petData
       );
       if (response.status === 200) {

@@ -42,7 +42,7 @@ function AdoptForm() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/adopts",
+        "https://pet-adoption-system-server.onrender.com/api/adopts",
         formData,
         {
           headers: {
