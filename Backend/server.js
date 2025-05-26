@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 8000;
 
 app.use(
   cors({
-    origin: "https://pet-adoption-system-five.vercel.app/",
+    origin: "https://pet-adoption-system-five.vercel.app",
     methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
     credentials: true,
   })
