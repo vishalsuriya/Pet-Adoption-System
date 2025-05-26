@@ -21,6 +21,7 @@ const AdminLogin = () => {
         console.error(error);
       });
   }, []);
+  console.log(adminData)
   const handleSubmit = (e) =>{
     e.preventDefault()
     const admin = adminData.find((admin) => admin.email === adminEmail && admin.password === adminPassword);

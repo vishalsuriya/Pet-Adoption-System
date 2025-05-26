@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 8000;
 
 app.use(
   cors({
-    origin: "https://petpalsconnect.netlify.app/",
+    origin: "https://petpalsconnect.netlify.app",
     methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
     credentials: true,
   })
